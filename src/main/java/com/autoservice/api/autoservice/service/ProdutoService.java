@@ -1,7 +1,9 @@
 package com.autoservice.api.autoservice.service;
 
+import com.autoservice.api.autoservice.dto.ProdutoDTO;
 import com.autoservice.api.autoservice.model.Produto;
 import com.autoservice.api.autoservice.repository.ProdutoRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +15,17 @@ public class ProdutoService {
     @Autowired
     private ProdutoRepository produtoRepository;
 
-    public Produto salvarProduto(Produto produto) {
+    public Produto criarProduto (@Valid ProdutoDTO dto) {
+
+        Produto produto = new Produto();
+        produto.setNome(dto.getNome());
+        produto.setCategoria(dto.getCategoria());
+        produto.setDescricao(dto.getDescricao());
+        produto.setQuantidade(dto.getQuantidade());
+        produto.setPrecoCompra(dto.getPrecoCompra());
+        produto.setPrecoVenda(dto.getPrecoVenda());
+        produto.setCategoria(dto.getCategoria());
+
         return produtoRepository.save(produto);
     }
 
