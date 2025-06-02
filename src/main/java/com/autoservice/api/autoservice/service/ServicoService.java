@@ -1,5 +1,6 @@
 package com.autoservice.api.autoservice.service;
 
+import com.autoservice.api.autoservice.dto.ServicoDTO;
 import com.autoservice.api.autoservice.model.Servico;
 import com.autoservice.api.autoservice.repository.ServicoRepository;
 import jakarta.validation.Valid;
