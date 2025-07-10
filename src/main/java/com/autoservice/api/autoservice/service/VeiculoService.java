@@ -15,7 +15,6 @@ import java.util.Optional;
 public class VeiculoService {
     @Autowired
     private VeiculoRepository veiculoRepository;
-    private ClienteRepository clienteRepository;
 
     public Veiculo criarVeiculo(@Valid VeiculoDTO dto){
         Veiculo veiculo = new Veiculo();
