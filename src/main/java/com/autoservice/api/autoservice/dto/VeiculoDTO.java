@@ -2,10 +2,19 @@ package com.autoservice.api.autoservice.dto;
 
 public class VeiculoDTO {
 
+    private Long cliente;
     private String placa;
-    private  String modelo;
+    private String modelo;
     private String marca;
     private Integer ano;
+
+    public Long getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Long cliente) {
+        this.cliente = cliente;
+    }
 
     public String getPlaca() {
         return placa;

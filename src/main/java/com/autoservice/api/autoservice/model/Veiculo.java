@@ -69,7 +69,7 @@ public class Veiculo {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(long cliente) {
         this.cliente = cliente;
     }
 }
