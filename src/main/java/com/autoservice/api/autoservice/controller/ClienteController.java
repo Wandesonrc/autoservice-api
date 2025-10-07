@@ -2,13 +2,13 @@ package com.autoservice.api.autoservice.controller;
 
 import com.autoservice.api.autoservice.dto.ClienteDTO;
 import com.autoservice.api.autoservice.model.Cliente;
-import com.autoservice.api.autoservice.service.ClienteService;
+import com.autoservice.api.autoservice.service.impl.ClienteServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class ClienteController {
 
     @Autowired
-    private ClienteService clienteService;
+    private ClienteServiceImpl clienteService;
 
     @PostMapping("/cliente")
-    public ResponseEntity<Cliente> criarCliente(@Valid ClienteDTO dto){
+    public ResponseEntity<Cliente> criarCliente(@Valid @RequestBody ClienteDTO dto){
         Cliente cliente = clienteService.criarCliente(dto);
         return new ResponseEntity<>(cliente, HttpStatus.CREATED);
 

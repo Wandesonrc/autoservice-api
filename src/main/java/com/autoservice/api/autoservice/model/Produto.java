@@ -23,7 +23,7 @@ public class Produto {
     @Column(name = "preco_compra")
     private BigDecimal precoCompra;
 
-    private String categoria;
+    private String categoria; //Criar Enum
 
     public Produto() {
     }
