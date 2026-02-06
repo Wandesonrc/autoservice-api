@@ -3,6 +3,8 @@ package com.autoservice.api.autoservice.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
+
 @Entity
 @Table(name = "TB_CLIENTE")
 public class Cliente {
@@ -19,6 +21,9 @@ public class Cliente {
 
     @Column(name = "data_cadastro")
     private LocalDate dataCadastro;
+
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Veiculo> veiculos;
 
     public Cliente() {
     }
