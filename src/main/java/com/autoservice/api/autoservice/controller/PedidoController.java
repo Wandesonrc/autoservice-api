@@ -1,8 +1,8 @@
 package com.autoservice.api.autoservice.controller;
 
-import com.autoservice.api.autoservice.dto.OrdemServicoDTO;
-import com.autoservice.api.autoservice.model.OrdemServico;
-import com.autoservice.api.autoservice.service.impl.OrdemServicoServiceimpl;
+import com.autoservice.api.autoservice.dto.PedidoDTO;
+import com.autoservice.api.autoservice.model.Pedido;
+import com.autoservice.api.autoservice.service.impl.PedidoServiceimpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
-public class OrdemServicoController {
+public class PedidoController {
     @Autowired
-    private OrdemServicoServiceimpl sevice;
+    private PedidoServiceimpl sevice;
 
-    @PostMapping("/os")
-    public ResponseEntity<OrdemServicoDTO>criarOs(@Valid @RequestBody OrdemServicoDTO dto){
-        OrdemServico ordemServico = sevice.criarOrdemServico(dto);
-        OrdemServicoDTO repost = sevice.ordemServicoConverte(ordemServico);
+    @PostMapping("/pedido")
+    public ResponseEntity<PedidoDTO>criarPedido(@Valid @RequestBody PedidoDTO dto){
+        Pedido pedido = sevice.criarPedido(dto);
+        PedidoDTO repost = sevice.pedidoConverte(pedido);
         return new ResponseEntity<>(repost, HttpStatus.CREATED);
     }
 }

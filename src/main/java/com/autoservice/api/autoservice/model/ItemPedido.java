@@ -1,27 +1,22 @@
 package com.autoservice.api.autoservice.model;
 
-import com.autoservice.api.autoservice.enus.TipoItemOrdemServico;
+import com.autoservice.api.autoservice.enus.TipoItemPedido;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "TB_ITEM_ORDEM_SERVICO")
-public class ItemOrdemServico {
+@Table(name = "TB_ITEM_PEDIDO")
+public class ItemPedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @Enumerated(EnumType.STRING)
-    private TipoItemOrdemServico tipo;
+    private TipoItemPedido tipo;
 
     private Long referenciaId;
-
-//    private Long IdProduto;
-
-//    private Long IdServico;
 
     private Integer quantidade;
 
@@ -29,10 +24,10 @@ public class ItemOrdemServico {
 
     private BigDecimal valorTotal;
 
-    @ManyToOne
-    @JoinColumn(name = "ordem_servico_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "pedido_id", nullable = false)
     @JsonIgnore
-    private OrdemServico ordemServico;
+    private Pedido pedido;
 
     public Long getId() {
         return id;
@@ -42,11 +37,11 @@ public class ItemOrdemServico {
         this.id = id;
     }
 
-    public TipoItemOrdemServico getTipo() {
+    public TipoItemPedido getTipo() {
         return tipo;
     }
 
-    public void setTipo(TipoItemOrdemServico tipo) {
+    public void setTipo(TipoItemPedido tipo) {
         this.tipo = tipo;
     }
 
@@ -82,11 +77,11 @@ public class ItemOrdemServico {
         this.valorTotal = valorTotal;
     }
 
-    public OrdemServico getOrdemServico() {
-        return ordemServico;
+    public Pedido getPedido() {
+        return pedido;
     }
 
-    public void setOrdemServico(OrdemServico ordemServico) {
-        this.ordemServico = ordemServico;
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
     }
 }

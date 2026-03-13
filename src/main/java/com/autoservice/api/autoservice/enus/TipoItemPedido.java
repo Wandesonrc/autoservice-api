@@ -1,6 +1,6 @@
 package com.autoservice.api.autoservice.enus;
 
-public enum TipoItemOrdemServico {
+public enum TipoItemPedido {
     SERVICO,
     PRODUTO
 }

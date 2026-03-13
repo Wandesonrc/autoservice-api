@@ -1,28 +1,40 @@
-//package com.autoservice.api.autoservice.service.impl;
-//
-//import com.autoservice.api.autoservice.service.ProdutoService;
-//import org.springframework.stereotype.Service;
-//
-//@Service
-//public class ServicoServiceImpl implements ProdutoService.ServicoService {
-////    @Autowired
-////    private ServicoRepository servicoRepository;
-////
-////    public Servico criarServico(@Valid ServicoDTO dto){
-////
-////        Servico servico = new Servico();
-////        servico.setNome(dto.getNome());
-////        servico.setDescricao(dto.getDescricao());
-////        servico.setValor(dto.getValor());
-////
-////        return servicoRepository.save(servico);
-////    }
-////
-////    public Optional<Servico> buscarPorId(Long id){
-////        return servicoRepository.findById(id);
-////    }
-////
-////    public List<Servico> listarServicos(){
-////        return servicoRepository.findAll();
-////    }
-//}
+package com.autoservice.api.autoservice.service.impl;
+
+import com.autoservice.api.autoservice.dto.ServicoDTO;
+import com.autoservice.api.autoservice.model.Servico;
+import com.autoservice.api.autoservice.repository.ServicoRepository;
+import com.autoservice.api.autoservice.service.ServicoService;
+import jakarta.persistence.EntityNotFoundException;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class ServicoServiceImpl implements ServicoService {
+
+    private final ServicoRepository repository;
+
+    public ServicoServiceImpl(ServicoRepository repository) {
+        this.repository = repository;
+    }
+
+    @Override
+    public Servico criarServico(ServicoDTO dto) {
+        return null;
+    }
+
+    @Override
+    public Servico buscarPorId(Long id) {
+        Optional<Servico> servico = repository.findById(id);
+        if (servico.isEmpty()){
+            throw new EntityNotFoundException("Serviço não encontrado");
+        }
+        return servico.get();
+    }
+
+    @Override
+    public List<Servico> listarServico() {
+        return repository.findAll();
+    }
+}

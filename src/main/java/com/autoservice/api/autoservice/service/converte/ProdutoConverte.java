@@ -13,7 +13,7 @@ public class ProdutoConverte implements ConverteTo <ProdutoDTO, Produto> {
             Produto produto = new Produto();
             produto.setNome(a.getNome());
             produto.setDescricao(a.getDescricao());
-            produto.setQuantidade(a.getQuantidade());
+            produto.setQuantidade_estoque(a.getQuantidade());
             produto.setPrecoVenda(a.getPrecoVenda());
             produto.setPrecoCompra(a.getPrecoCompra());
             produto.setCategoria(a.getCategoria());
@@ -29,7 +29,7 @@ public class ProdutoConverte implements ConverteTo <ProdutoDTO, Produto> {
             ProdutoDTO produto = new ProdutoDTO();
             produto.setNome(t.getNome());
             produto.setDescricao(t.getDescricao());
-            produto.setQuantidade(t.getQuantidade());
+            produto.setQuantidade(t.getQuantidade_estoque());
             produto.setPrecoCompra(t.getPrecoCompra());
             produto.setPrecoVenda(t.getPrecoVenda());
             produto.setCategoria(t.getCategoria());

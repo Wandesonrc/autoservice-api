@@ -1,12 +1,10 @@
 package com.autoservice.api.autoservice.dto;
 
-import com.autoservice.api.autoservice.model.ItemOrdemServico;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-public class OrdemServicoDTO {
+public class PedidoDTO {
 
     private Long id;
 
@@ -18,7 +16,7 @@ public class OrdemServicoDTO {
 
     private BigDecimal valorTotal;
 
-    private List<ItemOrdemServicoDTO> itens;
+    private List<ItemPedidoDTO> itens;
 
 
     public Long getId() {
@@ -54,11 +52,11 @@ public class OrdemServicoDTO {
         this.status = status;
     }
 
-    public List<ItemOrdemServicoDTO> getItens() {
+    public List<ItemPedidoDTO> getItens() {
         return itens;
     }
 
-    public void setItens(List<ItemOrdemServicoDTO> itens) {
+    public void setItens(List<ItemPedidoDTO> itens) {
         this.itens = itens;
     }
 

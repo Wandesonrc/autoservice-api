@@ -1,18 +1,16 @@
 package com.autoservice.api.autoservice.model;
 
-import com.autoservice.api.autoservice.enus.StatusOrdemServico;
+import com.autoservice.api.autoservice.enus.StatusPedido;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 @Entity
-@Table(name = "TB_ORDEM_SERVICO")
-public class OrdemServico {
+@Table(name = "TB_PEDIDO")
+public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,12 +23,12 @@ public class OrdemServico {
     private  LocalDate dataFechamento;
 
     @Enumerated(EnumType.STRING)
-    private StatusOrdemServico status;
+    private StatusPedido status;
 
 
-    @OneToMany(mappedBy = "ordemServico", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<ItemOrdemServico> itens;
+    private List<ItemPedido> itens;
 
     private BigDecimal valorTotal;
 
@@ -66,19 +64,19 @@ public class OrdemServico {
         this.dataFechamento = dataFechamento;
     }
 
-    public StatusOrdemServico getStatus() {
+    public StatusPedido getStatus() {
         return status;
     }
 
-    public void setStatus(StatusOrdemServico status) {
+    public void setStatus(StatusPedido status) {
         this.status = status;
     }
 
-    public List<ItemOrdemServico> getItens() {
+    public List<ItemPedido> getItens() {
         return itens;
     }
 
-    public void setItens(List<ItemOrdemServico> itens) {
+    public void setItens(List<ItemPedido> itens) {
         this.itens = itens;
     }
 

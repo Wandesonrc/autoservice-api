@@ -2,7 +2,7 @@ package com.autoservice.api.autoservice.dto;
 
 import java.math.BigDecimal;
 
-public class ItemOrdemServicoDTO {
+public class ItemPedidoDTO {
 
     private String tipoItem;
 
