@@ -15,7 +15,7 @@ public class Produto {
 
     private String descricao;
 
-    private Integer quantidade;
+    private Integer quantidade_estoque;
 
     @Column(name = "preco_venda")
     private BigDecimal precoVenda;
@@ -23,7 +23,7 @@ public class Produto {
     @Column(name = "preco_compra")
     private BigDecimal precoCompra;
 
-    private String categoria;
+    private String categoria; //Criar Enum
 
     public Produto() {
     }
@@ -52,12 +52,12 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public Integer getQuantidade() {
-        return quantidade;
+    public Integer getQuantidade_estoque() {
+        return quantidade_estoque;
     }
 
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
+    public void setQuantidade_estoque(Integer quantidade_estoque) {
+        this.quantidade_estoque = quantidade_estoque;
     }
 
     public BigDecimal getPrecoVenda() {

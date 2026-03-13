@@ -1,35 +1,17 @@
 package com.autoservice.api.autoservice.service;
 
+import com.autoservice.api.autoservice.dto.ProdutoDTO;
 import com.autoservice.api.autoservice.dto.ServicoDTO;
+import com.autoservice.api.autoservice.model.Produto;
 import com.autoservice.api.autoservice.model.Servico;
-import com.autoservice.api.autoservice.repository.ServicoRepository;
-import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
-@Service
-public class ServicoService {
-    @Autowired
-    private ServicoRepository servicoRepository;
+public interface ServicoService {
+    public Servico criarServico (ServicoDTO dto);
 
-    public Servico criarServico(@Valid ServicoDTO dto){
+    public Servico buscarPorId(Long id);
 
-        Servico servico = new Servico();
-        servico.setNome(dto.getNome());
-        servico.setDescricao(dto.getDescricao());
-        servico.setValor(dto.getValor());
+    public List<Servico> listarServico();
 
-        return servicoRepository.save(servico);
-    }
-
-    public Optional<Servico> buscarPorId(Long id){
-        return servicoRepository.findById(id);
-    }
-
-    public List<Servico> listarServicos(){
-        return servicoRepository.findAll();
-    }
 }

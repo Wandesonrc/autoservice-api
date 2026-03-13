@@ -1,8 +1,8 @@
 package com.autoservice.api.autoservice.controller;
 
-import com.autoservice.api.autoservice.dto.ClienteDTO;
-import com.autoservice.api.autoservice.model.Cliente;
-import com.autoservice.api.autoservice.service.impl.ClienteServiceImpl;
+import com.autoservice.api.autoservice.dto.PedidoDTO;
+import com.autoservice.api.autoservice.model.Pedido;
+import com.autoservice.api.autoservice.service.impl.PedidoServiceimpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,15 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
-public class ClienteController {
-
+public class PedidoController {
     @Autowired
-    private ClienteServiceImpl clienteService;
+    private PedidoServiceimpl sevice;
 
-    @PostMapping("/cliente")
-    public ResponseEntity<Cliente> criarCliente(@Valid @RequestBody ClienteDTO dto){
-        Cliente cliente = clienteService.criarCliente(dto);
-        return new ResponseEntity<>(cliente, HttpStatus.CREATED);
-
+    @PostMapping("/pedido")
+    public ResponseEntity<PedidoDTO>criarPedido(@Valid @RequestBody PedidoDTO dto){
+        Pedido pedido = sevice.criarPedido(dto);
+        PedidoDTO repost = sevice.pedidoConverte(pedido);
+        return new ResponseEntity<>(repost, HttpStatus.CREATED);
     }
 }
