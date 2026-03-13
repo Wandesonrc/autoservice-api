@@ -1,5 +1,7 @@
 package com.autoservice.api.autoservice.model;
 
+import com.autoservice.api.autoservice.enus.FormaPagamento;
+import com.autoservice.api.autoservice.enus.StatusPagamento;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -26,8 +28,7 @@ public class Pagamento {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status_pagamento", nullable = false, length = 20)
-    @Builder.Default
-    private StatusPagamento statusPagamento = StatusPagamento.CONFIRMADO;
+    private StatusPagamento statusPagamento = StatusPagamento.PENDENTE;
 
     @CreationTimestamp
     @Column(name = "data_pagamento")
