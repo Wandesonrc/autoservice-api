@@ -15,9 +15,7 @@ public class Pagamento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pedido_id", nullable = false)
-    private Pedido pedido;
+    private Long pedidoId;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "forma_pagamento", nullable = false, length = 30)
@@ -45,12 +43,12 @@ public class Pagamento {
         this.id = id;
     }
 
-    public Pedido getPedido() {
-        return pedido;
+    public Long getPedidoId() {
+        return pedidoId;
     }
 
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
+    public void setPedidoId(Long pedidoId) {
+        this.pedidoId = pedidoId;
     }
 
     public FormaPagamento getFormaPagamento() {

@@ -16,7 +16,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // desativa proteção CSRF para facilitar testes
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/os").permitAll() // libera a rota de cliente
+                        .requestMatchers("/api/**").permitAll() // libera a rota de cliente
                         .anyRequest().authenticated() // outras rotas exigem autenticação
                 );
         return http.build();

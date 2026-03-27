@@ -38,6 +38,12 @@ public class PedidoServiceimpl implements PedidoService {
         return convert.converteToFront(pedido);
     }
 
+    @Override
+    public Pedido buscarPorId(Long id) {
+
+        return null;
+    }
+
     private void validaCliente(Long idCliente) {
         clienteService.buscarPorId(idCliente);
     }
