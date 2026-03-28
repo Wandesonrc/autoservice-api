@@ -2,6 +2,7 @@ package com.autoservice.api.autoservice.service.impl;
 
 import com.autoservice.api.autoservice.dto.PagamentoDTO;
 import com.autoservice.api.autoservice.dto.PedidoDTO;
+import com.autoservice.api.autoservice.enus.StatusPagamento;
 import com.autoservice.api.autoservice.model.Pagamento;
 import com.autoservice.api.autoservice.model.Pedido;
 import com.autoservice.api.autoservice.repository.PagamentoRepository;
@@ -11,6 +12,8 @@ import com.autoservice.api.autoservice.service.PedidoService;
 import com.autoservice.api.autoservice.service.converte.PagamentoConverte;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PagamentoImpl implements PagamentoService {
@@ -37,7 +40,22 @@ public class PagamentoImpl implements PagamentoService {
         return converte.converteToFront(pagamento);
     }
 
-//    private void validaPedido(Long idPedido) {
-//        pedidoService.buscarPorId(idPedido);
-//    }
+    @Override
+    public List<Pagamento> listarPagamento() {
+        return repository.findAll();
+    }
+
+    @Override
+    public Pagamento busrcarPagamento(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Pagamento não encontrado: " + id));
+    }
+
+    @Override
+    public Pagamento cancelarPagamento(Long id) {
+        Pagamento pagamento = busrcarPagamento(id);
+        pagamento.setStatusPagamento(StatusPagamento.CANCELADO);
+        return repository.save(pagamento);
+    }
+
 }
